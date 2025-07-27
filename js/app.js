@@ -68,7 +68,7 @@ function handleLogin() {
         loginError.textContent = 'Username cannot be empty.';
         return;
     }
-    socket = io('http://localhost:3000');
+    socket = io('https://chat-app-i5e6.onrender.com');
     socket.emit('check username', value, (isTaken) => {
         if (isTaken) {
             loginError.textContent = 'Username already taken. Choose another.';
@@ -296,7 +296,11 @@ window.addEventListener('blur', () => {
     }
 });
 
-// --- Utility: Auto-scroll on new messages ---
-messagesList.addEventListener('DOMNodeInserted', () => {
+
+// Observe changes in the messages list
+const observer = new MutationObserver(() => {
     messagesList.scrollTop = messagesList.scrollHeight;
 });
+
+// Start observing the messages list for child node additions
+observer.observe(messagesList, { childList: true });
