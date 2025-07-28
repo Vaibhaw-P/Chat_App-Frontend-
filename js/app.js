@@ -68,7 +68,11 @@ function handleLogin() {
         loginError.textContent = 'Username cannot be empty.';
         return;
     }
-    socket = io('https://chat-app-i5e6.onrender.com');
+
+    socket = io('https://chat-app-i5e6.onrender.com', {
+    transports: ['websocket'],
+    });
+
     socket.emit('check username', value, (isTaken) => {
         if (isTaken) {
             loginError.textContent = 'Username already taken. Choose another.';
