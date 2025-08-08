@@ -340,3 +340,17 @@ body {
 #rooms li {
   transition: background 0.3s, color 0.3s;
 }
+
+/* Delete button for rooms */
+.delete-room-btn {
+  background: none;
+  border: none;
+  color: red;
+  font-size: 0.9em;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.delete-room-btn:hover {
+  color: darkred;
+}
